@@ -1,0 +1,660 @@
+﻿/* ------- VARIABLES ------- */
+
+:root {
+    /* Main */
+    --primary: #387057;
+    --primary-muted: #336A53;
+    --secondary: #1D2B2C;
+    --tertiary: #2F3A3C;
+
+    /* Accent */
+    --accent: #A16D00;
+    --blue: cornflowerblue;
+    --red: tomato;
+    --green: forestgreen;
+
+    /* Text */
+    --white: white;
+    --black: black;
+
+    /* Layout */
+    --topbar-height: 110px;
+    --sidebar-width: 400px;
+    --border-radius: 10px;
+    --large-border-radius: 15px;
+}
+
+
+/* ------- BASE STYLES ------- */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* ------- HOME PAGE ------- */
+
+section.home-container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--primary);
+}
+
+section.home-container h1 {
+    color: var(--white);
+    padding: 15px;
+}
+
+.home-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.home-buttons .button-item {
+    padding: 20px;
+    border-radius: var(--large-border-radius);
+
+    background-color: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+}
+
+
+/* ------- GAME LAYOUT ------- */
+
+main#game-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+section#game-topbar {
+    width: 100%;
+    height: var(--topbar-height);
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+
+    background-color: var(--secondary);
+    border-bottom: 4px solid var(--accent);
+}
+
+.game-Sidebar-Main-wrapper {
+    width: 100%;
+    height: calc(100vh - var(--topbar-height));
+
+    display: flex;
+    flex: 1;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+
+    color: var(--white);
+}
+
+section#game-sidebar {
+    width: var(--sidebar-width);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    background-color: var(--secondary);
+    border-right: 4px solid var(--accent);
+}
+
+section#game-main {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    flex: 1;
+
+    background-color: var(--primary);
+}
+
+
+/* ------- TOPBAR ------- */
+
+.nav {
+    width: var(--sidebar-width);
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-shrink: 0;
+}
+
+.nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.nav a img {
+    width: 280px;
+}
+
+.game-stats {
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.topbar-item {
+    width: 80px;
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--tertiary);
+    border-radius: var(--border-radius);
+    color: var(--white);
+}
+
+.topbar-item h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.topbar-item h2 {
+    width: 90%;
+    margin: 0;
+    padding: 10px;
+
+    background-color: var(--secondary);
+    border-radius: var(--border-radius);
+
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.money {
+    width: 150px !important;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+
+    border-radius: var(--border-radius);
+}
+
+.money h2 {
+    width: 100%;
+}
+
+
+/* ------- SIDEBAR ------- */
+
+.round-stats {
+    width: 100%;
+    padding: 10px;
+}
+
+.info-panel {
+    margin-bottom: 15px;
+    padding: 10px;
+
+    background-color: var(--tertiary);
+    border: 1px solid var(--black);
+    border-radius: var(--border-radius);
+}
+
+.info-panel h1,
+.info-panel h3 {
+    margin: 0;
+    text-align: center;
+}
+
+
+/* Target Score */
+
+.target-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.target-score h3 {
+    font-size: 1rem;
+}
+
+.score-value {
+    color: var(--red);
+    font-size: 2rem;
+}
+
+
+/* Round Score */
+
+.round-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.round-score h3 {
+    font-size: 1rem;
+}
+
+.score-display {
+    color: var(--blue);
+    font-size: 2rem;
+}
+
+
+/* Hand Scoring */
+
+.hand-scoring {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.poker-hand-name {
+    min-height: 68px;
+    padding: 10px;
+}
+
+.scoring-formula {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    grid-template-rows: 1fr;
+    gap: 0 10px;
+
+    justify-items: center;
+    align-items: center;
+}
+
+.scoring-formula > * {
+    margin: 0;
+}
+
+.scoring-chips,
+.scoring-multiplier {
+    width: 100%;
+    padding: 10px;
+
+    border-radius: var(--border-radius);
+    font-size: 1.3rem;
+}
+
+.scoring-chips {
+    background-color: var(--blue);
+    text-align: end;
+}
+
+.scoring-multiplier {
+    background-color: var(--red);
+}
+
+.operator {
+    font-size: 2rem;
+}
+
+
+/* Sidebar Buttons */
+
+.sidebar-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.game-state-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.game-state-buttons button {
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: var(--large-border-radius);
+
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-save-game {
+    background-color: var(--blue);
+}
+
+.btn-end-run {
+    background-color: var(--red);
+}
+
+
+/* ------- CARDS ------- */
+
+.card {
+    height: 150px;
+    border: 0;
+    position: relative;
+}
+
+.card img {
+    width: 108px;
+    height: 150px;
+}
+
+.card-hand {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.card-counter h1 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+/* Selected Hand */
+
+.special-cards-container {
+    height: 160px;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    background-color: var(--primary-muted);
+    border-radius: var(--large-border-radius);
+}
+
+.selected-hand-container .card-hand {
+    min-height: 270px;
+    margin-bottom: 50px;
+
+    display: flex;
+    align-items: end;
+
+    background-color: transparent;
+}
+
+
+/* Hand Container */
+
+.hand-container {
+    gap: 0 30px;
+    margin-bottom: 10px;
+}
+
+.hand-container > .card-hand {
+    background-color: var(--primary-muted);
+    border-radius: var(--large-border-radius);
+}
+
+.hand-card-count {
+    text-align: center;
+}
+
+.hand-card-count h1 {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+
+/* Card Information */
+
+.card-info {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    min-width: 130px;
+    padding: 10px;
+
+    background-color: var(--tertiary);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.card:hover .card-info {
+    display: flex;
+}
+
+.card-info > div {
+    color: var(--white);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.card-id {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.card-name {
+    font-weight: 500;
+}
+
+.card-cost {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.card-info form {
+    margin-top: 5px;
+}
+
+.card-button {
+    width: 100%;
+    padding: 5px;
+
+    background-color: var(--green);
+    border: 0;
+    color: var(--white);
+}
+
+
+/* ------- GENERAL BUTTONS ------- */
+
+button {
+    padding: 0;
+    border: 0;
+}
+
+.button-form {
+    display: inline;
+}
+
+
+/* Hand Action Buttons */
+
+.hand-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.hand-action-buttons button {
+    width: 100px;
+    height: 50px;
+
+    border: none;
+    border-radius: var(--large-border-radius);
+
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.hand-action-buttons .btn-play {
+    background-color: var(--blue);
+}
+
+.hand-action-buttons .btn-discard {
+    background-color: var(--red);
+}
+
+
+/* Shop Buttons */
+
+.btn-next-round {
+    background-color: var(--blue);
+}
+
+.btn-reroll {
+    background-color: var(--green);
+}
+
+
+/* ------- SHOP ------- */
+
+.shop {
+    min-height: 400px;
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    background-color: var(--secondary);
+    border-radius: var(--large-border-radius);
+}
+
+.shop .game-state-buttons {
+    flex-direction: row;
+}
+
+.special-cards {
+    display: flex;
+    gap: 15px;
+}
+
+.special-cards-shop-container {
+    min-height: 160px;
+}
+
+
+/* ------- SAVE / LOAD ------- */
+
+.SaveLoad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--white);
+    text-align: center;
+}
+
+.ExportGame,
+.ImportGame {
+    width: 700px;
+    padding: 40px;
+
+    background-color: var(--secondary);
+    border-radius: var(--large-border-radius);
+}
+
+.ExportGame h2,
+.ImportGame h2 {
+    padding-bottom: 15px;
+    color: var(--blue);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group textarea {
+    min-height: 65px;
+    max-height: 300px;
+    padding: 10px;
+
+    background-color: var(--tertiary);
+    border-radius: var(--border-radius);
+    color: var(--white);
+}
+
+.button-group button {
+    padding: 10px;
+
+    background-color: var(--blue);
+    border: none;
+    border-radius: var(--border-radius);
+
+    color: var(--white);
+}
+
+
+/* ------- GAME OVER ------- */
+
+.gameOverTitle {
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.gameOverTitle h1 {
+    color: var(--red);
+}
+
+.boughtCards h3 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.newRunButton {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-new-run {
+    padding: 15px 75px;
+
+    background-color: var(--blue);
+    border-radius: var(--border-radius);
+
+    color: var(--white);
+    font-weight: 500;
+}
