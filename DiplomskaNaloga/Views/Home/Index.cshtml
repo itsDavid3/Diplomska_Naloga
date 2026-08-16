@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Domov";
+}
+
+<main>
+    <section class="home-container">
+        <img src="~/images/LOGO.png"/>
+
+        <div class="home-buttons">
+            @Html.ActionLink("Nova igra", "Index", "Game", null, new { @class = "button-item" })
+            @Html.ActionLink("Naloži igro", "ExportGame", "Game", null, new { @class = "button-item" })
+        </div>
+    </section>
+</main>

@@ -1,0 +1,77 @@
+[
+  {
+    "Name": "Srečni as",
+    "Cost": "4",
+    "Description": "+4 množ",
+    "Effect": {
+      "stat": "množ",
+      "math": "seštej",
+      "value": 4
+    }
+  },
+  {
+    "Name": "Pari",
+    "Cost": "3",
+    "Description": "+3 množitelj pri igranju parov",
+    "Effect": {
+      "hand": "En Par",
+      "stat": "množ",
+      "math": "seštej",
+      "value": 3
+    }
+  },
+  {
+    "Name": "Bančni ropar",
+    "Cost": "4",
+    "Description": "Pomnožite žetone z 2 pri igranju karo kart",
+    "Effect": {
+      "suit": "Kara",
+      "stat": "žetoni",
+      "math": "pomnoži",
+      "value": 2
+    }
+  },
+  {
+    "Name": "Tria",
+    "Cost": "5",
+    "Description": "+6 množitelj pri igranju Trisa",
+    "Effect": {
+      "hand": "Tris",
+      "stat": "množ",
+      "math": "seštej",
+      "value": 6
+    }
+  },
+  {
+    "Name": "Puščica",
+    "Cost": "5",
+    "Description": "+10 množilno pri igranju Lestvice",
+    "Effect": {
+      "hand": "Lestvica",
+      "stat": "množ",
+      "math": "seštej",
+      "value": 10
+    }
+  },
+  {
+    "Name": "Kraljevina",
+    "Cost": "5",
+    "Description": "+40 žetonov pri igranju slikovnih kart",
+    "Effect": {
+      "rank": "face",
+      "stat": "žetoni",
+      "math": "seštej",
+      "value": 40
+    }
+  },
+  {
+    "Name": "Mojster za vse",
+    "Cost": "6",
+    "Description": "+3 roke",
+    "Effect": {
+      "stat": "roke",
+      "math": "seštej",
+      "value": 3
+    }
+  }
+]

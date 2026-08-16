@@ -1,0 +1,140 @@
+﻿@model DiplomskaNaloga.Models.GameViewModel
+
+@{
+    ViewData["Title"] = "Trgovina";
+
+    int numberOfCards = 0;
+
+    double roundGoal = Stake.CalculateRoundGoal(Model.ante, Model.round);
+}
+
+<main id="game-container">
+    <section id="game-topbar">
+        <div class="nav">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/LOGO.png"/></a>
+        </div>
+
+        <div class="game-stats">
+            <div class="topbar-item">
+                <h3>Roke</h3>
+                <h2>@Model.hands</h2>
+            </div>
+
+            <div class="topbar-item">
+                <h3>Zavržki</h3>
+                <h2>@Model.discards</h2>
+            </div>
+
+            <div class="topbar-item money">
+                <h3>Denar</h3>
+                <h2>$@Model.money</h2>
+            </div>
+
+            <div class="topbar-item">
+                <h3>Stava</h3>
+                <h2>@Model.ante</h2>
+            </div>
+            <div class="topbar-item">
+                <h3>Krog</h3>
+                <h2>@Model.round</h2>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="game-Sidebar-Main-wrapper">
+        <section id="game-sidebar">
+            <div class="round-stats">
+                <div class="info-panel target-score">
+                    <h3>Cilj kroga</h3>
+                    <h1 class="score-value">@roundGoal</h1>
+                </div>
+
+                <div class="info-panel round-score">
+                    <h3>Trenutni rezultat</h3>
+                    <h1 class="score-display">@Model.roundScore</h1>
+                </div>
+
+                <div class="info-panel hand-scoring">
+                    <h1 class="poker-hand-name">@Model.pokerHand</h1>
+                    <div class="scoring-formula">
+                        <h1 class="scoring-chips">@Model.chips</h1>
+                        <span class="operator">X</span>
+                        <h1 class="scoring-multiplier">@Model.mult</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-buttons">
+                <div class="game-state-buttons">
+                    <div>
+                        <form asp-controller="Game" asp-action="ExportGame" method="get">
+                            <button type="submit" class="btn-save-game">Shrani/Naloži <br /> Igro</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form asp-controller="Game" asp-action="NewHand" method="post" class="button-form">
+                            <button type="submit" class="btn-end-run">Končaj <br /> Igro</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="game-main">
+            <div class="special-cards-container">
+                @foreach (var c in Model.BoughtSpecialCards) {
+                    numberOfCards++;
+                    <div class="card" data-id="@c.ID">
+                        <img src="@c.ImagePath" alt="@c.Name" />
+                        <div class="card-info">
+                            <div class="card-name">@c.Name</div>
+                            <div class="card-description">@c.Description</div>
+                            <div class="card-cost">$@c.Cost</div>
+                        </div>
+                        <form asp-controller="Game" asp-action="SellSpecialCard" method="post">
+                            <input type="hidden" name="id" value="@c.ID" />
+                            <button type="submit" class="card-button">Prodaj</button>
+                        </form>
+                    </div>
+                }
+            </div>
+
+            <div class="card-counter">
+                <h1>@numberOfCards</h1>
+            </div>
+
+            <div class="shop">
+                <div class="special-cards-shop-container">
+                    <div class="special-cards">
+                        @foreach (var c in Model.SpecialCards) {
+                            numberOfCards++;
+                            <div class="card" data-id="@c.ID">
+                                <img src="@c.ImagePath" alt="@c.Name" />
+                                <div class="card-info">
+                                    <div class="card-name">@c.Name</div>
+                                    <div class="card-description">@c.Description</div>
+                                    <div class="card-cost">$@c.Cost</div>
+                                </div>
+                                <form asp-controller="Game" asp-action="BuySpecialCard" method="post">
+                                    <input type="hidden" name="id" value="@c.ID" />
+                                    <button type="submit" class="card-button">Kupi</button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="game-state-buttons">
+                    <form asp-controller="Game" asp-action="RerollShop" method="post">
+                        <button type="submit" class="btn-reroll">Prevrti trgovino - $5</button>
+                    </form>
+                    <form asp-controller="Game" asp-action="NextRound" method="post">
+                        <button type="submit" class="btn-next-round">Naslednji krog</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

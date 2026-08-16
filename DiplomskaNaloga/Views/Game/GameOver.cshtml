@@ -1,0 +1,116 @@
+﻿@model DiplomskaNaloga.Models.GameViewModel
+
+@{
+    ViewData["Title"] = "Konec Igre";
+
+    int numberOfCardsHand = 0;
+    int numberOfCardsSpecial = 0;
+
+    double roundGoal = Stake.CalculateRoundGoal(Model.ante, Model.round);
+}
+
+<main id="game-container">
+    <section id="game-topbar">
+        <div class="nav">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/LOGO.png"/></a>
+        </div>
+
+        <div class="game-stats">
+            <div class="topbar-item">
+                <h3>Roke</h3>
+                <h2>@Model.hands</h2>
+            </div>
+
+            <div class="topbar-item">
+                <h3>Zavržki</h3>
+                <h2>@Model.discards</h2>
+            </div>
+
+            <div class="topbar-item money">
+                <h3>Denar</h3>
+                <h2>$@Model.money</h2>
+            </div>
+
+            <div class="topbar-item">
+                <h3>Stava</h3>
+                <h2>@Model.ante</h2>
+            </div>
+            <div class="topbar-item">
+                <h3>Krog</h3>
+                <h2>@Model.round</h2>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="game-Sidebar-Main-wrapper">
+        <section id="game-sidebar">
+            <div class="round-stats">
+                <div class="info-panel target-score">
+                    <h3>Cilj kroga</h3>
+                    <h1 class="score-value">@roundGoal</h1>
+                </div>
+
+                <div class="info-panel round-score">
+                    <h3>Trenutni rezultat</h3>
+                    <h1 class="score-display">@Model.roundScore</h1>
+                </div>
+
+                <div class="info-panel hand-scoring">
+                    <h1 class="poker-hand-name">@Model.pokerHand</h1>
+                    <div class="scoring-formula">
+                        <h1 class="scoring-chips">@Model.chips</h1>
+                        <span class="operator">X</span>
+                        <h1 class="scoring-multiplier">@Model.mult</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-buttons">
+                <div class="game-state-buttons">
+                    <div>
+                        <form asp-controller="Game" asp-action="ExportGame" method="get">
+                            <button type="submit" class="btn-save-game">Shrani/Naloži <br /> Igro</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form asp-controller="Game" asp-action="NewHand" method="post" class="button-form">
+                            <button type="submit" class="btn-end-run">Končaj <br /> Igro</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="game-main">
+            <div class="gameOverTitle">
+                <h1>Konec igre</h1>
+                <h3>Več sreče prihodnjič!</h3>
+            </div>
+
+            <div class="boughtCards">
+                <h3>Kupljene posebne karte</h3>
+                <div class="special-cards-container">
+                    @foreach (var c in Model.BoughtSpecialCards) {
+                        numberOfCardsSpecial++;
+                        <div class="card" data-id="@c.ID">
+                            <img src="@c.ImagePath" alt="@c.Name" />
+                            <div class="card-info">
+                                <div class="card-name">@c.Name</div>
+                                <div class="card-description">@c.Description</div>
+                                <div class="card-cost">$@c.Cost</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="newRunButton">
+                <form asp-controller="Game" asp-action="NewHand" method="post" class="button-form">
+                    <button type="submit" class="btn-new-run">Nova Igra</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>

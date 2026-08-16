@@ -1,0 +1,70 @@
+{
+  "ranks": [
+    {
+      "name": "Dvojka",
+      "value": 2
+    },
+    {
+      "name": "Trojka",
+      "value": 3
+    },
+    {
+      "name": "Štirica",
+      "value": 4
+    },
+    {
+      "name": "Petica",
+      "value": 5
+    },
+    {
+      "name": "Šestica",
+      "value": 6
+    },
+    {
+      "name": "Sedmica",
+      "value": 7
+    },
+    {
+      "name": "Osemka",
+      "value": 8
+    },
+    {
+      "name": "Devetka",
+      "value": 9
+    },
+    {
+      "name": "Desetka",
+      "value": 10
+    },
+    {
+      "name": "Fant",
+      "value": 10
+    },
+    {
+      "name": "Kraljica",
+      "value": 10
+    },
+    {
+      "name": "Kralj",
+      "value": 10
+    },
+    {
+      "name": "As",
+      "value": 11
+    }
+  ],
+  "suits": [
+    {
+      "name": "Pikov"
+    },
+    {
+      "name": "Kara"
+    },
+    {
+      "name": "Src"
+    },
+    {
+      "name": "Križev"
+    }
+  ]
+}
